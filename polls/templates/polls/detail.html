@@ -1,10 +1,10 @@
-<h1>{{ q.q_txt }}</h1>
+<h1>{{ question.q_txt }}</h1>
 
 {%if error_message%}<p><strong>{{error_message}}</strong></p>{%endif%}
 
-<form action="{%url 'polls:vote' q.id%}" method="post">
+<form action="{%url 'polls:vote' question.id%}" method="post">
 {%csrf_token%}
-{%for c in q.choice_set.all%}
+{%for c in question.choice_set.all%}
     <input type="radio" name="c" id="c{{forloop.counter}}" value="{{c.id}}">
     <label for="c{{forloop.counter}}">{{c.c_txt}}</label><br>
 {%endfor%}
